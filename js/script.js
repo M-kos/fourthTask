@@ -16,7 +16,11 @@ function boardDraw() {
             } else if (j === 0 || j === 9) {
                 outStr += `<div class="row-${i + 1} col-${j + 1}">${numbers[k]}</div>`;
             } else {
-                outStr += `<div class="row-${i + 1} col-${j + 1}" id = ${letters[j]}${numbers[k]}></div>`;
+                if ((i + j) % 2 === 0) {
+                    outStr += `<div class="row-${i + 1} col-${j + 1}" id = ${letters[j]}${numbers[k]}></div>`;
+                } else {
+                    outStr += `<div class="row-${i + 1} col-${j + 1} blackSquad" id = ${letters[j]}${numbers[k]}></div>`;
+                }
             }
         }
         k--;
