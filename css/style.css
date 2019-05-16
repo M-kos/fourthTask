@@ -33,9 +33,13 @@ div[id] {
     box-sizing: border-box;
     border: 1px solid rgb(199, 197, 197);
 }
+div[id]:hover {
+    /* background-color: rgb(128, 126, 126); */
+    background-color: rgb(86, 86, 252);
+}
 .current-position {
     background-color: rgb(41, 41, 255);
 }
 .possible-moves {
-    background-color: rgb(41, 255, 105);
+    background-color: rgb(28, 194, 78);
 }

@@ -6,6 +6,12 @@ const board = document.querySelector('.board');
 
 boardDraw();
 
+const squads = document.querySelectorAll('div[id]');
+
+squads.forEach(el => {
+    el.addEventListener('click', selected);
+});
+
 function boardDraw() {
     let outStr = '';
     let k = numbers.length;
@@ -26,4 +32,34 @@ function boardDraw() {
         k--;
     }
     board.insertAdjacentHTML('beforeEnd', outStr);
+}
+
+function selected() {
+    document.querySelectorAll('div[id]').forEach(el => {
+        el.classList.remove('current-position');
+        el.classList.remove('possible-moves');
+    });
+
+    this.classList.add('current-position');
+    let idValue = this.getAttribute('id')
+
+    const horizontalAcces = [2, 1, -1, -2, -2, -1, 1, 2];
+    const verticalAcces = [-1, -2, -2, -1, 1, 2, 2, 1];
+
+    let xIndex = letters.indexOf(idValue[0]) - 1;
+    let yIndex = numbers.indexOf(idValue[1]);
+
+    
+
+    for (let i = 0; i < horizontalAcces.length; i++) {
+
+        let xStep = xIndex + horizontalAcces[i];
+        let yStep = yIndex + verticalAcces[i];
+
+        if ((xStep >= 0) && (xStep <= (horizontalAcces.length - 1)) &&
+            (yStep >= 0) && (yStep <= (verticalAcces.length - 1))) {
+            let idStep = letters[xStep+1] + numbers[yStep];
+            document.getElementById(idStep).classList.add('possible-moves');
+        }
+    }
 }
